@@ -1,0 +1,22 @@
+<div class="second-row__element-wrapper .elevation-z2 ">
+  <!-- Modal para el tutorial -->
+  <app-tutorial-modal
+    *ngIf="showTutorial"
+    (close)="handleCloseModal()"
+    (skip)="handleSkipTutorial()"
+  ></app-tutorial-modal>
+
+    <div class="second-row__element " >
+      <div class="flow-diagram__sidebar">
+        <img *ngFor="let icon of icons" [src]="icon" alt="" style="width: 55px; height: 55px;" draggable="true" (dragstart)="onDragStart($event, icon)" class="sidebar-icon">
+      </div>
+      <div id="container" (drop)="onDrop($event)" (dragover)="onDragOver($event)" class="capture-content"></div>
+    </div>
+    <div class="center-button__container">
+      <h2>Flujo de Procesos</h2>
+      <button (click)="downloadImage()">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        <span class="ms-1">Descargar Diagrama</span>
+      </button>
+    </div>
+  </div>
